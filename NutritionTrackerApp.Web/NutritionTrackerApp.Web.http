@@ -1,0 +1,6 @@
+@NutritionTrackerApp.Web_HostAddress = http://localhost:5223
+
+GET {{NutritionTrackerApp.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Tracking</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid p-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="fw-bold">Welcome, testuser!</h1>
+            <div>
+                <button id="logoutBtn" class="btn btn-outline-secondary btn-rounded me-2">Logout</button>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs" id="mainTabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#todayTab">Today</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#historyTab">History</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#goalsTab">Goals</a>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-3">
+
+            <!-- TODAY TAB -->
+            <div id="todayTab" class="tab-pane fade show active">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-outline-primary btn-rounded mb-3" data-bs-toggle="modal" data-bs-target="#addEntryModal">
+                        Add Entry
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped" id="todayTable">
+                        <thead class="table-primary"
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Amount</th>
+                                <th>Unit</th>
+                                <th>Total Calories</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="todayBody"></tbody>
+
+                        <tfoot>
+                            <tr class="table-secondary fw-bold">
+                                <td>Total</td>
+                                <td></td>
+                                <td></td>
+                                <td id="todayTotalCalories">0</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- HISTORY TAB -->
+            <div id="historyTab" class="tab-pane fade">
+
+                <div class="table-responsive">
+                    <table class="table table-striped" id="entriesTable">
+                        <thead class="table-primary"
+                            <tr>
+                                <th>Date</th>
+                                <th>Total Calories</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="entriesBody"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <!-- GOALS TAB -->
+            <div id="goalsTab" class="tab-pane fade">
+                <h5>Set your goals</h5>
+
+                <form id="goalsForm" class="row g-3">
+
+                    <div class="col-md-4"><label>Calories min</label><input type="number" class="form-control" id="calMin"></div>
+                    <div class="col-md-4"><label>Calories max</label><input type="number" class="form-control" id="calMax"></div>
+
+                    <div class="col-md-4"><label>Protein min</label><input type="number" class="form-control" id="proteinMin"></div>
+                    <div class="col-md-4"><label>Protein max</label><input type="number" class="form-control" id="proteinMax"></div>
+
+                    <div class="col-md-4"><label>Carbs min</label><input type="number" class="form-control" id="carbsMin"></div>
+                    <div class="col-md-4"><label>Carbs max</label><input type="number" class="form-control" id="carbsMax"></div>
+
+                    <div class="col-md-4"><label>Fat min</label><input type="number" class="form-control" id="fatMin"></div>
+                    <div class="col-md-4"><label>Fat max</label><input type="number" class="form-control" id="fatMax"></div>
+
+                    <div class="col-md-4"><label>Sugar min</label><input type="number" class="form-control" id="sugarMin"></div>
+                    <div class="col-md-4"><label>Sugar max</label><input type="number" class="form-control" id="sugarMax"></div>
+
+                    <div class="col-12 mt-2 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-outline-primary btn-rounded mb-3">Save Goals</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ADD ENTRY MODAL -->
+    <div class="modal fade" id="addEntryModal">
+        <div class="modal-dialog">
+            <div class="modal-content p-3">
+                <h5>Add Food Entry</h5>
+
+                <div class="mb-3"><label>Ingredient name</label><input id="ingredientName" class="form-control autocomplete-ingredient" /></div>
+                <div class="mb-3"><label>Quantity</label><input id="quantity" type="number" class="form-control" /></div>
+                <div class="mb-3">
+                    <label>Unit</label>
+                    <select id="unit" class="form-control">
+                        <option>g</option>
+                        <option>ml</option>
+                        <option>pcs</option>
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary btn-rounded me-2" data-bs-dismiss="modal">Cancel</button>
+                    <button id="saveEntry" class="btn btn-primary btn-rounded">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DELETE ENTRY MODAL -->
+    <div class="modal fade" id="confirmDeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content p-3">
+                <h5>Are you sure?</h5>
+                <p>Do you really want to delete this entry?</p>
+
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-secondary btn-rounded me-2" data-bs-dismiss="modal">No</button>
+                    <button id="confirmDeleteBtn" class="btn btn-danger btn-rounded" onclick="deleteEntry()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- DAILY DETAILS MODAL -->
+    <div class="modal fade" id="dailyDetailsModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content p-3">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 id="dailyDetailsTitle">Daily Details</h4>
+                </div>
+
+                <table class="table table-striped">
+                    <thead class="table-primary"
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Qty</th>
+                            <th>Unit</th>
+                            <th>Calories</th>
+                            <th>Protein</th>
+                            <th>Carbs</th>
+                            <th>Fat</th>
+                            <th>Sugar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dailyDetailsBody"></tbody>
+                </table>
+
+                <hr>
+
+                <div class="row text-center fw-bold">
+                    <div class="col">Calories: <span id="totalCalories">0</span></div>
+                    <div class="col">Protein: <span id="totalProtein">0</span></div>
+                    <div class="col">Carbs: <span id="totalCarbs">0</span></div>
+                    <div class="col">Fat: <span id="totalFat">0</span></div>
+                    <div class="col">Sugar: <span id="totalSugar">0</span></div>
+                </div>
+
+                <div class="mt-4">
+                    <h5>Nutrition Progress</h5>
+                    <div class="mb-2">
+                        <label>Calories</label>
+                        <input type="range" class="form-range" min="0" max="3000" id="sliderCalories" disabled>
+                    </div>
+                    <div class="mb-2">
+                        <label>Protein</label>
+                        <input type="range" class="form-range" min="0" max="200" id="sliderProtein" disabled>
+                    </div>
+                    <div class="mb-2">
+                        <label>Carbs</label>
+                        <input type="range" class="form-range" min="0" max="400" id="sliderCarbs" disabled>
+                    </div>
+                    <div class="mb-2">
+                        <label>Fat</label>
+                        <input type="range" class="form-range" min="0" max="150" id="sliderFat" disabled>
+                    </div>
+                    <div class="mb-2">
+                        <label>Sugar</label>
+                        <input type="range" class="form-range" min="0" max="100" id="sliderSugar" disabled>
+                    </div>
+
+                    <div class="mb-2 d-flex justify-content-end">
+                        <button id="btnBack" class="btn btn-outline-primary btn-rounded mt-1" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

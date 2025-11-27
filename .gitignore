@@ -1,0 +1,32 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build folders
+bin/
+obj/
+
+# Logs
+*.log
+
+# IIS Express
+applicationhost.config
+
+# Publish
+*.pubxml
+*.pubxml.user
+
+# NuGet packages
+packages/
+*.nupkg
+
+# User secrets
+**/secrets.json
+
+# Rider / VSCode
+.idea/
+.vscode/
+
+# Node (if used)
+node_modules/

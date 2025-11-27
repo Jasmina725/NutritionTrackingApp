@@ -1,0 +1,219 @@
+﻿
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    color: #343a40;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+    .header h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #343a40;
+    }
+
+    .header .user-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .header .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .header .btn-logout {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    .header .btn-logout:hover {
+        background-color: #c82333;
+    }
+
+.nav-tabs {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.nav-tabs .nav-link {
+    border-radius: 10 10 0 0;
+    color: #495057;
+    margin-right: 5px;
+    padding: 8px 20px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.btn-rounded {
+    border-radius: 50px;
+}
+
+.btn-add {
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    font-weight: 500;
+}
+
+.btn-add:hover {
+    background-color: #0b5ed7;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+}
+
+    .btn-delete:hover {
+        background-color: #c82333;
+    }
+
+.table-responsive {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+table {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f5f7f9; /* modernija svijetla nijansa */
+}
+
+.table-dark th {
+    background-color: #23272b;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+.total-row {
+    font-weight: 600;
+    background-color: #d4f3e4 !important;
+}
+
+.table .btn {
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.container, .container-fluid {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.form-range {
+    height: 8px;
+    margin-bottom: 15px;
+}
+
+.slider-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.slider-container {
+    margin-bottom: 15px;
+}
+
+.modal-content {
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.form-control {
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav-tabs .nav-link {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .btn-add, .btn-delete, .btn-logout {
+        padding: 5px 12px;
+        font-size: 0.9rem;
+    }
+}
+.login-body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card {
+    background: #ffffff;
+    border-radius: 15px;
+}
+
+.btn-rounded {
+    border-radius: 50px;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+}
