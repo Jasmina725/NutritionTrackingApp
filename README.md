@@ -51,4 +51,4 @@ Before running the application, ensure the following:
 3. **Running the Application**
    - Once the database is set up, build and run the application by pressing **F5** or selecting **Run** in Visual Studio.
    - The application will start, and the API will be ready to use.
-   - 
+   - Use test user to login: **username: testuser, password: test** or you could register new via register endpoint.
